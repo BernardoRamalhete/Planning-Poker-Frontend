@@ -22,12 +22,14 @@
     import { useRoomStore } from '@/stores/room'
 
     onMounted(() => {
-        const roomIdInput = document.getElementById('roomId')
-        if(roomIdInput) {
-            roomIdInput.focus()
-        } else {
-            document.getElementById('username').focus()
-        }
+        nextTick(() => {
+            const roomIdInput = document.querySelector('#roomId')
+            if(roomIdInput) {
+                roomIdInput.focus()
+            } else {
+                document.querySelector('#username').focus()
+            }
+        })
         document.addEventListener('keydown', sendDataOnEnterPress)
     })
     onBeforeUnmount(() => {
