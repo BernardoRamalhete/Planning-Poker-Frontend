@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+p, div, span, strong, small, button {
+    color: $text_light;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $text_dark;
+}
+
+svg {
+    width: 40px;
+    height: 40px;
+    color: $text_dark;
+}
+
+#body {
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+//feedbacks
+.error_feedback{
+    display: block;
+    padding: 12px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: $error_color;
+    svg{
+        width: 16px;
+        color: $error_color;
+    }
+}
+
+//custom scrollbar
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $medium_grey; 
+    border-radius: 12px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $text_light; 
+  }
+
+  //loading animation
+  .loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+
+  //form
+  input{
+    background-color: $white;
+    font-size: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    border: 2px solid $medium_grey;
+    width: 100%;
+    min-height: 56px;
+    box-shadow: 0 8px 20px 0 $box_shadow;
+    &:focus, &:focus-visible, &:active{
+        outline: none;
+        border-color:$text_light;
+        background-color: $white;
+    }
+  }
+
+  //transition
+  .fade-enter-active,
+  .fade-leave-active {
+      transition: all 0.4s;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+      opacity: 0;
+      height: 0;
+  }

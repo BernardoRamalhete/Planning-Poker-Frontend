@@ -1,0 +1,29 @@
+
+$white: #FFFFFF;
+$light_green: #B3EFB2;
+$secondary_light_green: #b3efb2;
+$medium_green: #3AD38C;
+$dark_green: #2D6A4F;
+
+$light_grey: #F3F9FA;
+$medium_grey: #E8F1F2;
+$green_gradient: linear-gradient(180deg, $light_green 0%, $medium_green 100%);
+
+
+$box_shadow: rgba(0, 26, 35, 0.24);
+$transition_default: all 0.2s ease;
+$overlay_default: rgba(0, 26, 35, 0.6);
+
+$text_dark: #001A23;
+$text_light: #5C7E82;
+$text_highlight: #3AD38C;
+
+//feedback colors
+$error_color: rgb(255, 61, 78);
+$success_color: rgb(43, 241, 129);
+
+//responsive breakpoints
+$br_mobile: 640px;
+$br_tablet: 768px;
+$br_desktop: 1280px;
+$br_desktop-lg: 1440px
