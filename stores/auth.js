@@ -3,7 +3,7 @@ import { useRuntimeConfig } from '#imports'
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        API_RUL: useRuntimeConfig().public.API_URL + '/user/',
+        API_URL: useRuntimeConfig().public.API_URL + '/user/',
         authenticated: false,
         user: null
     }),
@@ -21,7 +21,6 @@ export const useAuthStore = defineStore('auth', {
                     },
                     body: JSON.stringify({ username }) 
                 })
-
                 if(!("message" in response)) {
                     this.user = response
                     this.authenticated = true
