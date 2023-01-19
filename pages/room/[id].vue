@@ -22,6 +22,7 @@
     import moment from 'moment'
     import { useAuthStore } from '@/stores/auth'
     import { useRoomStore } from '@/stores/room'
+    import { useRuntimeConfig } from '#imports'
 
     definePageMeta({
         middleware: ["get-room", "auth"],

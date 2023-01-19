@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useRuntimeConfig } from '#imports'
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({

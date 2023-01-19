@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
 import { useAuthStore } from './auth';
+import { useRuntimeConfig } from '#imports'
 
 export const useRoomStore = defineStore('room', {
     state: () => ({
-        API_RUL: useRuntimeConfig().public.API_URL + '/room/',
+        API_URL: useRuntimeConfig().public.API_URL + '/room/',
         room: null,
         counterIntervalId: null,
         counter: null
@@ -47,7 +48,7 @@ export const useRoomStore = defineStore('room', {
                     "Authorization": "Bearer " + token
                 }
     
-                const response = await $fetch(this.API_URL + "create", {
+                const response = await $fetch(`${this.API_URL}create`, {
                     method: "POST",
                     headers,
                     body
@@ -65,7 +66,7 @@ export const useRoomStore = defineStore('room', {
         },
         async getRoomById(id) {
             try {
-                const response = await $fetch(this.API_URL + id, {
+                const response = await $fetch(`${this.API_URL}${id}`, {
                     method: "GET"
                 })
 
