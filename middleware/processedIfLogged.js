@@ -5,7 +5,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
     if(authStore.$authenticated) {
         if(!!to.query.id) {
-            navigateTo('/room/' + to.query.id)
+            if(to.query.id !== 'find') {
+                navigateTo('/room/' + to.query.id)
+            }
         } else {
             navigateTo('/room/create')
         }

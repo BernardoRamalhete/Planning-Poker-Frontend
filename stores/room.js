@@ -72,7 +72,9 @@ export const useRoomStore = defineStore('room', {
 
                 if(!("message" in response)) {
                     this.room = response
+                    return 200
                 } else {
+                    return 404
                     throw new Error(response.message)
                 }
             } catch (error) {
