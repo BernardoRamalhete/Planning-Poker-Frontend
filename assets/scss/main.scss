@@ -36,12 +36,13 @@ svg {
 //feedbacks
 .error_feedback{
     display: block;
-    padding: 12px 0;
+    padding: 4px 0;
     font-size: 12px;
     font-weight: 600;
     color: $error_color;
     svg{
         width: 16px;
+        height: 16px;
         color: $error_color;
     }
 }
@@ -69,26 +70,26 @@ svg {
   }
 
   //loading animation
+  .loading{
+    position: relative;
+  }
   .loading:after {
-    overflow: hidden;
     display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4,end) 900ms infinite;
-    animation: ellipsis steps(4,end) 900ms infinite;
-    content: "\2026"; /* ascii code for the ellipsis character */
-    width: 0px;
+    content: '';
+    width: 40px;
+    aspect-ratio: 6;
+    --_g: no-repeat radial-gradient(circle closest-side,rgba(0, 26, 35, 0.2) 90%,#0000);
+    background: 
+      var(--_g) 0%   50%,
+      var(--_g) 50%  50%,
+      var(--_g) 100% 50%;
+    background-size: calc(100%/3) 100%;
+    animation: dots 1s infinite linear;
   }
-  
-  @keyframes ellipsis {
-    to {
-      width: 1.25em;    
-    }
-  }
-  
-  @-webkit-keyframes ellipsis {
-    to {
-      width: 1.25em;    
-    }
+  @keyframes dots {
+      33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+      50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+      66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
   }
 
   //form
