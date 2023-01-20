@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>What do you wanna do do?</h1>
+    <h1>What do you wanna do?</h1>
     <div class="select__options__wrap">
       <nuxt-link to="/room/create" class="select__options__wrap__item">
         <AppCard icon="fluent:add-12-filled" :hasBorder="false" class="primary"/>
@@ -39,6 +39,9 @@
         font-weight: 600;
         margin-top: 20px;
         transition: $transition_default;
+        @media(max-width: $br_mobile){
+          font-size: 16px;
+        }
       }
       &:hover{
         p{

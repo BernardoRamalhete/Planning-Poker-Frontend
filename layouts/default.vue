@@ -27,6 +27,7 @@
     footer {
         text-align: center;
         padding-bottom: 38px;
+        padding: 0 32px;
         p {
             font-size: 12px;
              span {

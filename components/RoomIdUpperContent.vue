@@ -175,7 +175,7 @@
             margin-bottom: 8px;
         }
         .cards__wrapper {
-            padding: 32px 48px 100px 32px ;
+            padding: 32px 32px 100px 32px ;
             display: flex;
             justify-content: center;
             gap: 20px;

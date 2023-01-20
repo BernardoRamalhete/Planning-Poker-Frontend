@@ -143,13 +143,18 @@
                         color: $dark_green;
                         strong{
                             color: $dark_green;
+                            word-break: break-all;
                         }
                     }
 
                     svg {
-                        width: 20px;
-                        height: 20px;
+                        width: 22px;
+                        height: 22px;
                         color: $dark_green;
+                        @media (max-width: $br_mobile){
+                            width: 32px;
+                            height: 32px;
+                        }
                     }
                 }
             }

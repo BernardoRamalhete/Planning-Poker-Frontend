@@ -265,7 +265,7 @@
                         p{
                             font-size: 16px;
                             font-weight: 600;
-                            color: $dark_green;
+                            color: $text_light;
                             &.waiting{
                                 color: $text_light;
                             }
@@ -287,6 +287,9 @@
                 display: flex;
                 justify-content: space-between;
                 gap: 40px;
+                @media (max-width:$br_mobile){
+                    flex-wrap: wrap;
+                }
                 &__cards{
                     list-style: none;
                     display: flex;
@@ -300,75 +303,81 @@
                         }
                     }
                 }
-            }
-            .agreement{
-                h3{
-                    color: $text_dark;
-                    font-size: 20px;
-                    margin-bottom: 14px;
-                    display: block;
-                }
-                strong{
-                    font-size: 60px;
-                    font-weight:600;
-                    color: $medium_green;
-                }
-                &__bar{
-                    widows: 100%;
-                    height:12px;
-                    background-color: $medium_grey;
-                    border-radius: 20px;
-                    position: relative;
-                    span{
-                        height: 100%;
-                        background-color: $medium_green;
+                .agreement{
+                    @media (max-width:$br_mobile){
+                        width: 100%;
+                    }
+                    h3{
+                        color: $text_dark;
+                        font-size: 20px;
+                        margin-bottom: 14px;
+                        display: block;
+                    }
+                    strong{
+                        font-size: 60px;
+                        font-weight:600;
+                        color: $medium_green;
+                        word-break: break-all;
+                        min-width: 160px;
+                        display: block;
+                    }
+                    &__bar{
+                        widows: 100%;
+                        height:12px;
+                        background-color: $medium_grey;
                         border-radius: 20px;
-                        position: absolute;
+                        position: relative;
+                        span{
+                            height: 100%;
+                            background-color: $medium_green;
+                            border-radius: 20px;
+                            position: absolute;
+                        }
                     }
                 }
-            }
-            .final__decision{
-                h3{
-                    color: $text_dark;
-                    font-size: 20px;
-                    margin-bottom: 14px;
-                    display: block;
-                }
-                &__cards{
-                    list-style: none;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 8px;
-                    li{
-                        label{
-                            span{
-                                background-color: $medium_grey;
-                                display: grid;
-                                place-items: center;
-                                width: 60px;
-                                height: 80px;
-                                border-radius: 8px;
-                                border: 2px solid $medium_grey;
-                                font-weight: 600;
-                                font-size: 20px;
-                                cursor: pointer;
-                                transition: $transition_default;
-                                svg, p{
-                                    color: $text_light;
+                .final__decision{
+                    h3{
+                        color: $text_dark;
+                        font-size: 20px;
+                        margin-bottom: 14px;
+                        display: block;
+                    }
+                    &__cards{
+                        list-style: none;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        li{
+                            label{
+                                span{
+                                    background-color: $medium_grey;
+                                    display: grid;
+                                    place-items: center;
+                                    width: 60px;
+                                    height: 80px;
+                                    border-radius: 8px;
+                                    border: 2px solid $medium_grey;
+                                    font-weight: 600;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    transition: $transition_default;
+                                    svg, p{
+                                        color: $text_light;
+                                    }
+                                    svg{
+                                       width: 24px;
+                                       height: 24px; 
+                                    }
                                 }
-                                svg{
-                                   width: 24px;
-                                   height: 24px; 
-                                }
-                            }
-                            input[type=radio]{
-                                display: none;
-                                &:checked+span{
-                                    border-color:$medium_green;
-                                    background-color:$white;
-                                    box-shadow: 0 8px 20px 0 $box_shadow;
-                                    p,svg{
-                                        color: $medium_green;
+                                input[type=radio]{
+                                    display: none;
+                                    &:checked+span{
+                                        border-color:$medium_green;
+                                        background-color:$white;
+                                        box-shadow: 0 8px 20px 0 $box_shadow;
+                                        p,svg{
+                                            color: $medium_green;
+                                        }
                                     }
                                 }
                             }

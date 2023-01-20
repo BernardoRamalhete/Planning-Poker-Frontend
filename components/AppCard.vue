@@ -43,6 +43,14 @@
         width: 48px;
         height: 48px;
     }
+    @media(max-width: $br_mobile){
+        width: 80px;
+        height: 110px;
+        svg {
+            width: 32px;
+            height: 32px;
+        }
+    }
     &.bordered__card{
         width: 100px;
         height: 140px;
