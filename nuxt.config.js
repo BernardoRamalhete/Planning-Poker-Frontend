@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+    head: {
+        link: [
+            { hid: 'icon', rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
+        ]
+    },
     runtimeConfig: {
         public: {
           API_URL: process.env.API_URL,
@@ -25,5 +30,5 @@ export default defineNuxtConfig({
                 }
             }
         }
-    },
+    }
 })
