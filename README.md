@@ -33,6 +33,8 @@ Build the application for production:
 npm run build
 ```
 
+Feat https://github.com/crismartins
+
 Locally preview production build:
 
 ```bash
