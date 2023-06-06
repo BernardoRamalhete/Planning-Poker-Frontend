@@ -125,7 +125,7 @@
             })
     
             if(totalVotes > 0) {
-                return (100 * mostVottedAmount) / totalVotes
+                return ((100 * mostVottedAmount) / totalVotes).toFixed(2)
             } else {
                 return 100
             }
@@ -231,11 +231,13 @@
                         width: 68px;
                         height: 94px;
                         border-radius: 8px;
+                        flex-shrink: 0;
                     }
                     .card__ready {
                         background-color: $medium_green;
                         width: 68px;
                         height: 94px;
+                        flex-shrink: 0;
                         border-radius: 8px;
                         display: grid;
                         place-items: center;
@@ -248,6 +250,7 @@
                     .card__revealed {
                         width: 68px;
                         height: 94px;
+                        flex-shrink: 0;
                         border-radius: 8px;
                         display: grid;
                         place-items: center;
