@@ -1,6 +1,5 @@
 <template>
     <div id="page-id">
-        <AppLoading v-if="loading"/>
         <RoomIdUpperContent 
             :users="users"
             :roomStatus="roomStatus"
@@ -22,6 +21,7 @@
     import moment from 'moment'
     import { useAuthStore } from '@/stores/auth'
     import { useRoomStore } from '@/stores/room'
+    import { useLoadingStore } from '@/stores/loading'
     import { useRuntimeConfig } from '#imports'
 
     definePageMeta({
@@ -32,8 +32,8 @@
     const route = useRoute()
     const roomId = ref(route.params.id)
     const authStore = useAuthStore()
-
-    const loading = ref(true)
+    const loadingStore = useLoadingStore()
+    loadingStore.setActive(true)
 
     const runtimeConfig = useRuntimeConfig();
     const SOCKET_URL = runtimeConfig.public.SOCKET_URL
@@ -103,7 +103,7 @@
                             }
                         }
                     }
-                    loading.value = false
+                    loadingStore.setActive(false)
                 }
                 break;
                 case 'update final decision':
@@ -116,7 +116,7 @@
         }
     }
     function sendInitialData() {
-        loading.value = true
+        loadingStore.setActive(true)
         sendSocketMessage({
             command: 'store user and send room state',
             data: {
@@ -128,6 +128,7 @@
                 roomId: roomId.value
             }
         })
+        loadingStore.setActive(false)
     }
     function sendSocketMessage(message) {
         socket.value.send(JSON.stringify(message))

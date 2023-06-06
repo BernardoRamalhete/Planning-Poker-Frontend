@@ -2,12 +2,14 @@
     <div id="user">
         <h1 v-if="enteringRoom" class="loading">Entering room <span>{{roomId}}</span></h1>
         <h1 v-else>Creating room</h1>
-        <label for="username">Room Id</label>
-        <div class="input__wrapper">
-            <input type="text" v-model="roomId" id="roomId" role="presentation" autocomplete="off" aria-autocomplete="none" placeholder="Type the room id...">
-            <small class="error_feedback" v-if="roomNotFound">
-                <AppIcon iconName="fluent:warning-12-filled"/> Room not found! Please try again.
-            </small>
+        <div v-if="enteringRoom">
+            <label for="username">Room Id</label>
+            <div class="input__wrapper">
+                <input type="text" v-model="roomId" id="roomId" role="presentation" autocomplete="off" aria-autocomplete="none" placeholder="Type the room id...">
+                <small class="error_feedback" v-if="roomNotFound">
+                    <AppIcon iconName="fluent:warning-12-filled"/> Room not found! Please try again.
+                </small>
+            </div>
         </div>
         <label for="username">Type your name</label>
         <div class="input__wrapper">
@@ -23,9 +25,10 @@
 <script setup>
     import { useAuthStore } from '@/stores/auth' 
     import { useRoomStore } from '@/stores/room'
+    import { useLoadingStore } from '@/stores/loading'
 
     const route = useRoute()
-
+    const loadingStore = useLoadingStore()
     const enteringRoom = ref(false)
     const roomId = ref(null)
     const roomIdError = ref(false)
@@ -73,7 +76,9 @@
 
     async function validateForm() {
         roomIdError.value = showRoomIdInput.value && roomId.value == ''
+        loadingStore.setActive(true)
         await roomStore.getRoomById(roomId.value)
+        loadingStore.setActive(true)
         if(!roomStore.$room == undefined) {
             roomIdError.value = true
         }
@@ -85,7 +90,7 @@
 
     const roomNotFound = ref(false)
     async function sendForm() {
-        console.log('send form')
+        loadingStore.setActive(true)
         const validForm = await validateForm()
         if(validForm) {
             await authStore.upsert(username.value)
@@ -94,15 +99,20 @@
                 if(enteringRoom.value) {
                     if(code !== 200) {
                         roomNotFound.value = true
+                        loadingStore.setActive(false)
                     } else {
                         roomNotFound.value = false
+                        loadingStore.setActive(false)
                         navigateTo('/room/' + roomId.value)
                     }
                 } else {
+                    loadingStore.setActive(false)
                     navigateTo('/room/create')
                 }
             }
+            loadingStore.setActive(false)
         }
+        loadingStore.setActive(false)
     }
 </script>
 

@@ -49,11 +49,13 @@
 
 <script setup>
     import { useRoomStore } from "@/stores/room"
+    import { useLoadingStore } from "@/stores/loading"
 
     definePageMeta({
         layout: 'no-footer'
     })
 
+    const loadingStore = useLoadingStore()
     const createRoomError = ref(false)
 
     const cardNumbers = reactive([0, 0.5, 1, 2, 3 ,5, 8, 13, 20, 40, 100])
@@ -85,10 +87,11 @@
                 cards: Array.from(selectedCards),
                 timerInSeconds: selectedTimerOption.value > 0 ? selectedTimerOption.value : null
             }
-    
+            loadingStore.setActive(true)
             await roomStore.create(data)
-    
-    
+            loadingStore.setActive(false)
+            
+            
             if(roomStore.$room != undefined) {
                 navigateTo('/room/' + roomStore.$room._id)
             }

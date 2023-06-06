@@ -1,8 +1,23 @@
 <template>
     <NuxtLayout>
+        <AppLoading v-if="isLoading"/>
         <NuxtPage />
     </NuxtLayout>
 </template>
+
+<script setup>
+    import { useLoadingStore } from '@/stores/loading';
+
+    const loadingStore = useLoadingStore()
+    const isLoading = computed(() => {
+        return  loadingStore.$active
+    })
+    loadingStore.setActive(true)
+    
+    onMounted(() => {
+        loadingStore.setActive(false)
+    })
+</script>
     
 <style lang="scss" scoped>
     .layout-enter-active,
