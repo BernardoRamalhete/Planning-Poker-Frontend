@@ -1,6 +1,8 @@
 <template>
     <header>
-        <img src="@/assets/images/PlanningPokerLogo.svg" alt="logo">
+        <nuxt-link to="/">
+            <img src="@/assets/images/PlanningPokerLogo.svg" alt="logo">
+        </nuxt-link>
         <AppIcon iconName="fluent:globe-16-regular" v-if="false"/>
     </header>
 </template>

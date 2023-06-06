@@ -19,6 +19,9 @@
         <small class="error_feedback" v-if="usernameError">
             <AppIcon iconName="fluent:warning-12-filled"/> Please, enter an username
         </small>
+        <nuxt-link class="back-link" to="/">
+            <AppIcon class="back-button" iconName="lucide:arrow-left" /> Back to Homepage
+        </nuxt-link>
     </div>
 </template>
 
@@ -121,6 +124,26 @@
         width: 100%;
         max-width: 412px;
         padding: 0 32px;
+        .back-link{
+            padding: 20px 0;
+            color: $text_light;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            &:hover{
+                color: $text_dark;
+                .back-button{
+                    color: $text_dark;
+                }
+            }
+            .back-button{
+                width: 24px;
+                color: $text_light;
+                margin-right: 8px;
+            }
+        }
         h1{
             margin-bottom: 40px;
             text-align: center;
